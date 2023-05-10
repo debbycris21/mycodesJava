@@ -1,0 +1,86 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
+import java.util.Scanner;
+
+abstract class Conta {
+    private double saldo;
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public abstract void imprimeExtrato();
+
+    public void sacar(double valor) {
+        if (valor > saldo) {
+            System.out.println("Saldo insuficiente.");
+        } else {
+            saldo -= valor;
+            System.out.println("\nSaque no valor de R$" + valor + " realizado com sucesso.");
+            System.out.println("\nNovo saldo: R$" + saldo);
+        }
+    }
+}
+
+class ContaPoupanca extends Conta {
+    @Override
+    public void imprimeExtrato() {
+        System.out.println("\n---- Extrato Conta Poupança ----");
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/aaaa HH:mm:ss");
+        Date date = new Date();
+
+        System.out.println("\nSaldo: R$" + this.getSaldo());
+        System.out.println("\nData: " + dateFormat.format(date));
+    }
+}
+
+class ContaCorrente extends Conta {
+    @Override
+    public void imprimeExtrato() {
+        System.out.println("\n---- Extrato Conta Corrente ----");
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/aaaa HH:mm:ss");
+        Date date = new Date();
+
+        System.out.println("\nSaldo: R$" + this.getSaldo());
+        System.out.println("\nData: " + dateFormat.format(date));
+
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Scanner input = new Scanner(System.in);
+
+        System.out.print("Digite o saldo inicial da conta poupança: ");
+        double saldoPoupanca = input.nextDouble();
+        Conta cp = new ContaPoupanca();
+        cp.setSaldo(saldoPoupanca);
+
+        System.out.print("\nDigite o saldo inicial da conta corrente: ");
+        double saldoCorrente = input.nextDouble();
+        Conta cc = new ContaCorrente();
+        cc.setSaldo(saldoCorrente);
+
+        System.out.println("\n----- Extrato inicial -----");
+        cp.imprimeExtrato();
+        cc.imprimeExtrato();
+
+        System.out.print("\nDigite o valor do saque na conta poupança: ");
+        double saquePoupanca = input.nextDouble();
+        cp.sacar(saquePoupanca);
+
+        System.out.print("\nDigite o valor do saque na conta corrente: ");
+        double saqueCorrente = input.nextDouble();
+        cc.sacar(saqueCorrente);
+
+        System.out.println("\n----- Extrato final -----\n");
+        cp.imprimeExtrato();
+        cc.imprimeExtrato();
+    }
+}
