@@ -1,0 +1,63 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static class Animal {
+        public void emitirSom() {
+            System.out.println("Som genérico de animal.");
+        }
+    }
+
+    public static class Cachorro extends Animal {
+        public void emitirSom() {
+            System.out.println("Au au!");
+        }
+    }
+
+    public static class Gato extends Animal {
+        public void emitirSom() {
+            System.out.println("Miau!");
+        }
+    }
+
+    public static class Cavalo extends Animal {
+        public void emitirSom() {
+            System.out.println("Relincho!");
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner ler = new Scanner(System.in);
+
+        System.out.println("Digite as informações do animal:");
+
+        System.out.print("Nome: ");
+        String nome = ler.nextLine();
+
+        System.out.print("Tipo (Cachorro, Gato ou Cavalo): ");
+        String tipo = ler.nextLine();
+
+        Animal animal;
+
+        switch (tipo) {
+            case "Cachorro":
+                animal = new Cachorro();
+                break;
+            case "Gato":
+                animal = new Gato();
+                break;
+            case "Cavalo":
+                animal = new Cavalo();
+                break;
+            default:
+                System.out.println("Tipo de animal inválido.");
+                return;
+        }
+
+        System.out.println("\nInformações do animal:");
+        System.out.println("Nome: " + nome);
+        System.out.println("Tipo: " + tipo);
+        
+        animal.emitirSom();
+    }
+}
