@@ -1,0 +1,101 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static class Animal {
+         String nome;
+         int idade;
+
+        public Animal(String nome, int idade) {
+            this.nome = nome;
+            this.idade = idade;
+        }
+    }
+
+    public static class Cachorro extends Animal {
+         String raca; //atributo de cachorro
+        
+        public Cachorro(String nome, int idade, String raca) {
+            super(nome, idade);
+            this.raca = raca;
+        }
+    }
+
+    public static class Gato extends Animal {
+        String corPelo;
+        
+        public Gato(String nome, int idade, String corPelo) {
+            super(nome, idade);
+            this.corPelo = corPelo;
+        }
+    }
+
+    public static class Passaro extends Animal {
+        String tipoBico;
+        
+        public Passaro(String nome, int idade, String tipoBico) {
+            super(nome, idade);
+            this.tipoBico = tipoBico;
+        }
+    }
+    
+    public static void main(String[] args) { // código a ser executado
+    
+    Scanner ler = new Scanner(System.in);    
+    
+        System.out.println("-------- Digite as informações dos animais --------\n");
+        System.out.println("~Cachorro~");
+        System.out.printf("Nome:");
+        String nomeD = ler.next();
+    
+        System.out.printf("Idade:");
+        int idadeD = ler.nextInt();
+        
+        System.out.printf("Raça:");
+        String racaD = ler.next();
+        
+        Cachorro cachorro = new Cachorro(nomeD, idadeD, racaD);
+        
+        System.out.println("\n~Gato~");
+        System.out.printf("Nome:");
+        String nomeC = ler.next();
+    
+        System.out.printf("Idade:");
+        int idadeC = ler.nextInt();
+        
+        System.out.printf("Cor do Pelo:");
+        String corPeloC = ler.next();
+        
+        Gato gato = new Gato(nomeC, idadeC, corPeloC);
+        
+        
+        System.out.println("\n~Passáro~");
+        System.out.printf("Nome:");
+        String nomeB = ler.next();
+    
+        System.out.printf("Idade:");
+        int idadeB = ler.nextInt();
+        
+        System.out.printf("Tipo de Bico:");
+        String tipoBicoB = ler.next();
+        
+        Passaro passaro = new Passaro(nomeB, idadeB, tipoBicoB);
+        
+        System.out.println("\n------- Informações dos animais -------\n");
+        System.out.println("\n~~Cachorro~~\n"); 
+        System.out.printf("Nome: %s\n", cachorro.nome);
+        System.out.printf("Idade: %d\n", cachorro.idade);
+        System.out.printf("Raça: %s\n\n", cachorro.raca);
+        
+        System.out.println("\n~~Gato~~-\n");
+        System.out.printf("Nome: %s\n", gato.nome);
+        System.out.printf("Idade: %d\n", gato.idade);
+        System.out.printf("Cor do pelo: %s\n", gato.corPelo);
+        
+        System.out.println("\n~~Passaro~~\n");
+        System.out.printf("Nome: %s\n", passaro.nome);
+        System.out.printf("Idade: %d\n", passaro.idade);
+        System.out.printf("Tipo do Bico: %s\n", passaro.tipoBico);
+
+    }
+}
