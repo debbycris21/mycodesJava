@@ -1,0 +1,51 @@
+import java.util.Scanner;
+
+public class Main {
+    
+    public static class ContaBancaria {
+        private double saldo;
+        private double limite;
+
+        public void setSaldo(double saldo) {
+            if (saldo < 0) {
+                throw new IllegalArgumentException("O saldo não pode ser negativo.");
+            }
+            this.saldo = saldo;
+        }
+
+        public void setLimite(double limite) {
+            if (limite <= 0) {
+                throw new IllegalArgumentException("O limite deve ser maior do que zero.");
+            }
+            this.limite = limite;
+        }
+
+        public double getSaldo() {
+            return saldo;
+        }
+
+        public double getLimite() {
+            return limite;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner ler = new Scanner(System.in);
+
+        System.out.println("Digite as informações da conta bancária:");
+
+        System.out.print("Saldo: ");
+        double saldo = ler.nextDouble();
+
+        System.out.print("Limite: ");
+        double limite = ler.nextDouble();
+
+        ContaBancaria conta = new ContaBancaria();
+        conta.setSaldo(saldo);
+        conta.setLimite(limite);
+
+        System.out.println("\nInformações da conta bancária:");
+        System.out.println("Saldo: " + conta.getSaldo());
+        System.out.println("Limite: " + conta.getLimite());
+    }
+}
