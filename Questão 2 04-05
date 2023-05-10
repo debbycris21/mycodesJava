@@ -1,0 +1,75 @@
+import java.util.Scanner;
+
+public class Main{
+
+    public static class Pessoa{
+        String nome;
+        int idade;
+
+        public Pessoa(String nome, int idade){
+            this.nome = nome;
+            this.idade = idade;
+        }
+    }
+
+    public static class Funcionario extends Pessoa{
+        float salario; // atributo Funcionario
+
+        public Funcionario(String nome, int idade, float salario){
+            super(nome, idade);
+            this.salario = salario;
+        }
+    }
+
+    public static class Cliente extends Pessoa{
+        int codigo;
+
+        public Cliente(String nome, int idade, int codigo){
+            super(nome, idade);
+            this.codigo = codigo;
+        }
+    }
+
+    public static void main(String[] args){ // código a ser executado
+
+        Scanner ler = new Scanner(System.in);
+
+        System.out.println("------- Digite as suas informações --------\n");
+        System.out.println("~Funcionário~");
+        System.out.print("Nome:");
+        String nomeF = ler.nextLine();
+
+        System.out.print("Idade:");
+        int idadeF = ler.nextInt();
+
+        System.out.print("Salário:");
+        float salarioF = ler.nextFloat();
+
+        Funcionario funcionario = new Funcionario(nomeF, idadeF, salarioF);
+
+        System.out.println("\n~Cliente~");
+        System.out.print("Nome:");
+        String nomeC = ler.nextLine();
+        nomeC = ler.nextLine();
+
+        System.out.print("Idade:");
+        int idadeC = ler.nextInt();
+
+        System.out.print("Código:");
+        int codigoC = ler.nextInt();
+
+        Cliente cliente = new Cliente(nomeC, idadeC, codigoC);
+
+        System.out.println("\n------- Informações das pessoas -------\n");
+        System.out.println("\n~~Funcionário~~\n");
+        System.out.printf("Nome: %s\n", funcionario.nome);
+        System.out.printf("Idade: %d\n", funcionario.idade);
+        System.out.printf("Salário: %.2f\n\n", funcionario.salario);
+
+        System.out.println("\n~~Cliente~~-\n");
+        System.out.printf("Nome: %s\n", cliente.nome);
+        System.out.printf("Idade: %d\n", cliente.idade);
+        System.out.printf("Código: %d\n", cliente.codigo);
+
+    }
+}
