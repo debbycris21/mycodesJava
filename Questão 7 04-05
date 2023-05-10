@@ -1,0 +1,49 @@
+import java.util.Scanner;
+
+public class Main {
+
+    public static class Carro {
+        private String modelo;
+        private int ano;
+
+        public void setModelo(String modelo) {
+            if (modelo != null) {
+                this.modelo = modelo;
+            }
+        }
+
+        public void setAno(int ano) {
+            if (ano > 1900) {
+                this.ano = ano;
+            }
+        }
+
+        public String getModelo() {
+            return modelo;
+        }
+
+        public int getAno() {
+            return ano;
+        }
+    }
+
+    public static void main(String[] args) {
+        Scanner ler = new Scanner(System.in);
+
+        System.out.println("----- Digite as informações do carro -----\n");
+
+        System.out.print("Modelo: ");
+        String modelo = ler.nextLine();
+
+        System.out.print("Ano: ");
+        int ano = ler.nextInt();
+
+        Carro carro = new Carro();
+        carro.setModelo(modelo);
+        carro.setAno(ano);
+
+        System.out.println("\n~~~~~~ Informações do carro ~~~~~~ \n");
+        System.out.println("Modelo: " + carro.getModelo());
+        System.out.println("Ano: " + carro.getAno());
+    }
+}
