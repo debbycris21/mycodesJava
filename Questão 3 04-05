@@ -1,0 +1,74 @@
+import java.util.Scanner;
+
+public class Main{
+
+public static class Conta{
+    int numero;
+    float saldo;
+
+    public Conta(int numero, float saldo){
+        this.numero = numero;
+        this.saldo = saldo;
+    }
+}
+
+public static class ContaCorrente extends Conta{
+    float limite; // atributo específico da ContaCorrente
+
+    public ContaCorrente(int numero, float saldo, float limite){
+        super(numero, saldo);
+        this.limite = limite;
+    }
+}
+
+public static class ContaPoupanca extends Conta{
+    float taxaRendimento; // atributo específico da ContaPoupanca
+
+    public ContaPoupanca(int numero, float saldo, float taxaRendimento){
+        super(numero, saldo);
+        this.taxaRendimento = taxaRendimento;
+    }
+}
+
+public static void main(String[] args){ // código a ser executado
+
+    Scanner ler = new Scanner(System.in);
+                                                                                                                                                                                                                                                                                                                                                                     
+    System.out.println("------- Digite as informações das suas contas --------\n");
+    System.out.println("~Conta Corrente~");
+    System.out.print("Número:");
+    int numeroCC = ler.nextInt();
+
+    System.out.print("Saldo:");
+    float saldoCC = ler.nextFloat();
+
+    System.out.print("Limite:");
+    float limiteCC = ler.nextFloat();
+
+    ContaCorrente contaCorrente = new ContaCorrente(numeroCC, saldoCC, limiteCC);
+
+    System.out.println("\n~Conta Poupança~");
+    System.out.print("Número:");
+    int numeroCP = ler.nextInt();
+
+    System.out.print("Saldo:");
+    float saldoCP = ler.nextFloat();
+
+    System.out.print("Taxa de Rendimento:");
+    float taxaRendimentoCP = ler.nextFloat();
+
+    ContaPoupanca contaPoupanca = new ContaPoupanca(numeroCP, saldoCP, taxaRendimentoCP);
+
+     System.out.println("\n------- Informações das Contas -------\n");
+    System.out.println("\n~~Conta Corrente~~\n");
+    System.out.printf("Número: %d\n", contaCorrente.numero);
+    System.out.printf("Saldo: %.2f\n", contaCorrente.saldo);
+    System.out.printf("Limite: %.2f\n\n", contaCorrente.limite);
+
+    System.out.println("\n~~Conta Poupança~~-\n");
+    System.out.printf("Número: %d\n", contaPoupanca.numero);
+    System.out.printf("Saldo: %.2f\n", contaPoupanca.saldo);
+    System.out.printf("Taxa de Rendimento: %.2f\n", contaPoupanca.taxaRendimento);
+
+    }
+}
