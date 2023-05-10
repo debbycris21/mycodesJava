@@ -1,0 +1,112 @@
+import java.util.Scanner;
+
+abstract class Pessoa {
+    private String nome;
+    private int idade;
+
+    public Pessoa(String nome, int idade) {
+        this.nome = nome;
+        this.idade = idade;
+    }
+
+    public String getNome() {
+        return nome;
+    }
+
+    public void setNome(String nome) {
+        this.nome = nome;
+    }
+
+    public int getIdade() {
+        return idade;
+    }
+
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
+
+    public abstract void exibirDados();
+}
+
+class Aluno extends Pessoa {
+    private String matricula;
+
+    public Aluno(String nome, int idade, String matricula) {
+        super(nome, idade);
+        this.matricula = matricula;
+    }
+
+    public String getMatricula() {
+        return matricula;
+    }
+
+    public void setMatricula(String matricula) {
+        this.matricula = matricula;
+    }
+
+    public void exibirDados() {
+        System.out.println("Nome: " + getNome() + ", Idade: " + getIdade() + ", Matrícula: " + matricula);
+    }
+}
+
+class Professor extends Pessoa {
+    private String disciplina;
+
+    public Professor(String nome, int idade, String disciplina) {
+        super(nome, idade);
+        this.disciplina = disciplina;
+    }
+
+    public String getDisciplina() {
+        return disciplina;
+    }
+
+    public void setDisciplina(String disciplina) {
+        this.disciplina = disciplina;
+    }
+
+    public void exibirDados() {
+        System.out.println("Nome: " + getNome() + ", Idade: " + getIdade() + ", Disciplina: " + disciplina);
+    }
+}
+
+public class Main {
+
+    public static void main(String[] args) {
+
+        Scanner sc = new Scanner(System.in);
+
+        System.out.println("Informe o nome do aluno:");
+        String nomeAluno = sc.nextLine();
+
+        System.out.println("Informe a idade do aluno:");
+        int idadeAluno = sc.nextInt();
+        sc.nextLine();
+
+        System.out.println("Informe a matrícula do aluno:");
+        String matricula = sc.nextLine();
+
+        Aluno aluno = new Aluno(nomeAluno, idadeAluno, matricula);
+
+        System.out.println("\nInforme o nome do professor:");
+        String nomeProfessor = sc.nextLine();
+
+        System.out.println("Informe a idade do professor:");
+        int idadeProfessor = sc.nextInt();
+        sc.nextLine();
+
+        System.out.println("Informe a disciplina do professor:");
+        String disciplina = sc.nextLine();
+
+        Professor professor = new Professor(nomeProfessor, idadeProfessor, disciplina);
+
+        sc.close();
+
+        System.out.println("\nDados do aluno:");
+        aluno.exibirDados();
+
+        System.out.println("\nDados do professor:");
+        professor.exibirDados();
+    }
+
+}
