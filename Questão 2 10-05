@@ -1,0 +1,73 @@
+import java.text.SimpleDateFormat;
+import java.util.Date;
+
+abstract class Conta {
+    private double saldo;
+
+    public void setSaldo(double saldo) {
+        this.saldo = saldo;
+    }
+
+    public double getSaldo() {
+        return saldo;
+    }
+
+    public abstract void imprimeExtrato();
+
+    public void sacar(double valor) {
+        if (valor > saldo) {
+            System.out.println("Saldo insuficiente.");
+        } else {
+            saldo -= valor;
+            System.out.println("Saque no valor de R$" + valor + " realizado com sucesso.");
+            System.out.println("Novo saldo: R$" + saldo);
+        }
+    }
+}
+
+class ContaPoupanca extends Conta {
+    @Override
+    public void imprimeExtrato() {
+        System.out.println("---- Extrato Conta Poupança ----");
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/yyyy hh:mm:ss");
+        Date date = new Date();
+
+        System.out.println("Saldo: R$" + this.getSaldo());
+        System.out.println("\nData: " + dateFormat.format(date));
+    }
+}
+
+class ContaCorrente extends Conta {
+    @Override
+    public void imprimeExtrato() {
+        System.out.println("\n\n---- Extrato Conta Corrente ----");
+
+        SimpleDateFormat dateFormat = new SimpleDateFormat("dd/MM/aaaa HH:mm:ss");
+        Date date = new Date();
+
+        System.out.println("Saldo: R$" + this.getSaldo());
+        System.out.println("\nData: " + dateFormat.format(date));
+
+    }
+}
+
+public class Main {
+    public static void main(String[] args) {
+        Conta cp = new ContaPoupanca();
+        cp.setSaldo(15638);
+        cp.imprimeExtrato();
+
+        cp.sacar(500); // saque de R$ 500
+
+        cp.imprimeExtrato();
+
+        Conta cc = new ContaCorrente();
+        cc.setSaldo(5482.25);
+        cc.imprimeExtrato();
+
+        cc.sacar(1000); // saque de R$ 1000
+
+        cc.imprimeExtrato();
+    }
+}
